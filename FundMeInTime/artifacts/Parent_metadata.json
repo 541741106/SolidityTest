@@ -1,0 +1,79 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "a",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "addOne",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "some",
+						"type": "uint256"
+					}
+				],
+				"name": "addSome",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"FundMeInTime/InheritanceTest.sol": "Parent"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"FundMeInTime/InheritanceTest.sol": {
+			"keccak256": "0xb647e8bfad43efb5a8dc20193049b9c74399aac1f4c7a41c60fbe51de2f38a17",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://10c66c0e000f96d139042e00172fe26dbe3b55fc4a2db9d26bdaf22e74a392c8",
+				"dweb:/ipfs/QmRBfWPQ1bN3GDdLY7q1kFcPS1ZLNMqpVTc4UecSwruP9f"
+			]
+		}
+	},
+	"version": 1
+}
