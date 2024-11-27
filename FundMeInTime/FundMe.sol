@@ -25,7 +25,9 @@ contract FundMe {
     uint256 deploymentTimestamp; //起始时间
     uint256 lockTime; //锁定长度
 
-    AggregatorV3Interface internal dataFeed;
+    AggregatorV3Interface internal dataFeed;//用来获取当时的ETH价格
+
+    bool public getFundSuccess = false;//用来记录是否已经调用过getFund函数
     //构造器
     constructor(uint256 _lockTime) {
         //sepolia testnet的ETH转USD的价格
@@ -77,6 +79,7 @@ contract FundMe {
 
     //目标值
     //使用require判断是否超过锁定期
+    //如果锁定期过后Fund成功，则筹款transfer入合约创建者的账户
     function getFund() external {
         require(convertEthToUsd(address(this).balance/*单位为wei*/) >= TARGET /*单位为USD*/, "Target is not reached"); //判断是否达到目标值
         require(msg.sender == owner, "This function can only be called by owner");
@@ -85,11 +88,11 @@ contract FundMe {
 
         //transfer 纯转账 transfer ETH and revert if failed
         //addr.transfer(value)
-        payable(msg.sender/*默认的地址是不能payable的因此要强制转换*/).transfer(address(this).balance);
+        //payable(msg.sender/*默认的地址是不能payable的因此要强制转换*/).transfer(address(this).balance);
 
         //send 纯转账。如果转载成功返回true，失败返回false
-        bool success = payable(msg.sender).send(address(this).balance);
-        require(success, "Transaction failed");
+        //bool success = payable(msg.sender).send(address(this).balance);
+        //require(success, "Transaction failed");
 
         //call 带有data的转账，理论来说所有转账都能使用，也是被官方推荐的
         //可以返回function的返回值和一个bool值，如果成功为true
@@ -97,6 +100,8 @@ contract FundMe {
         bool success2;
         (success2, ) = payable(msg.sender).call{value: address(this).balance}("");
         require(success2, "Transaction failed");
+
+        getFundSuccess = true;
     }
 
     //筹集资金未成功，退款
@@ -109,6 +114,19 @@ contract FundMe {
         (success, ) = payable (msg.sender).call{value: amount}("");
         require(success, "Refund failed");
         fundersToAmount[msg.sender] = 0;
+    }
+
+    address erc20Addr;
+
+    function setErc20Addr(address _erc20Addr) public {
+        require(msg.sender == owner, "This function can only be called by owner");
+
+        erc20Addr = _erc20Addr;
+    }
+
+    function setFunderToAmount(address funder, uint256 amountToUpdate) external {
+        require(msg.sender == erc20Addr, " ");
+        fundersToAmount[funder] = amountToUpdate;
     }
 
     //修改器，可以增加服用程度，比如也可以把判断是否是owner也写成modifier

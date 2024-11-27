@@ -64,7 +64,51 @@
 			},
 			{
 				"inputs": [],
+				"name": "getFundSuccess",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "refund",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_erc20Addr",
+						"type": "address"
+					}
+				],
+				"name": "setErc20Addr",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "funder",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amountToUpdate",
+						"type": "uint256"
+					}
+				],
+				"name": "setFunderToAmount",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -100,7 +144,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"FundMe.sol": "FundMe"
+			"FundMeInTime/FundMe.sol": "FundMe"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -122,12 +166,12 @@
 				"dweb:/ipfs/QmaG6vz6W6iEUBsbHSBob5mdcitYxWjoygxREHpsJHfWrS"
 			]
 		},
-		"FundMe.sol": {
-			"keccak256": "0xc450baee8a15fb21918b8121e3578c39791ff65454e24826f3cb62230b252593",
+		"FundMeInTime/FundMe.sol": {
+			"keccak256": "0x8da2aafcf72a59c59f0490bb2c06bbbd824b54a55c7355c6b865fdba8778053f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c1f129f16fbf679b944ca2b8a50c5955ef751cf79651ef45e39702c38adb5074",
-				"dweb:/ipfs/QmTV1iss391Zu8AwcW3excqEab93LL69u4XPvAKSdP2AG6"
+				"bzz-raw://239cfb9d45e0b2d50a5c9f965ae8f6e85713b63b678f4a9d4c33c7779a5c3585",
+				"dweb:/ipfs/QmPQSo6ULif3fQJBSM4v2y9BmD3W6sPn7ZkxTwMJ1VeWf9"
 			]
 		}
 	},
